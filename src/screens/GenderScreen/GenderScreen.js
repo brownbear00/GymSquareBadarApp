@@ -1,42 +1,53 @@
-import { } from 'react';
-import { StatusBar, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React from 'react';
+import { View } from 'react-native';
 import MainStyling from '../../constant/MainStyling';
 import Texcustom from '../../components/Text/Textcustom';
-import AppStatusBar from '../../components/AppStatusBar/AppStatusBar';
 import Header from '../../components/Header/Header';
 import SliderButtons from '../../components/Buttons/SliderButtons';
 import { acolors } from '../../constant/colors';
 import { hp, wp } from '../../constant/responsive';
+import { useNavigation } from '@react-navigation/native';
+import ScreenBackgroundImage from '../../components/BackgroundImage/ScreenBackgroundImage';
+
 export default function GenderScreen() {
-    return (
-        <SafeAreaView style={[MainStyling.container]}>
-            <AppStatusBar />
-            <View style={[MainStyling.flex, MainStyling.body, {}]}>
-                <Header />
-                <View style={[MainStyling.rowcentered, { marginVertical: hp('4%') }]}>
-                    <Texcustom
-                        title={'Tell us about yourself'}
-                        style={[MainStyling.textBold, {
-                            fontSize: 35,
-                            color: acolors.secondaryblack
+  const navigation = useNavigation();
 
-                        }]}
-                        textalign={'center'}
-                    />
-                    <Texcustom
-                        title={'please choose your gender. We value your uniqueness'}
-                        style={[MainStyling.textRegular, {
-                            fontSize: 15,
-                            color: acolors.gray
+  function gotoOldscreen() {
+    navigation.navigate('EntryScreen');
+  }
 
-                        }]}
-                        textalign={'center'} />
-                </View>
-                <View style={[MainStyling.bottomSection]}>
-                    <SliderButtons />
-                </View>
-            </View>
-        </SafeAreaView>
-    )
+  return (
+    <ScreenBackgroundImage>
+      <View style={[MainStyling.flex, MainStyling.body]}>
+        <Header />
+        <View style={[MainStyling.rowcentered, { marginVertical: hp('4%') }]}>
+          <Texcustom
+            title={'Tell us about yourself'}
+            style={[
+              MainStyling.textSemiBold,
+              {
+                fontSize: wp(8),
+                color: acolors.secondaryblack,
+              },
+            ]}
+            textalign={'center'}
+          />
+          <Texcustom
+            title={'Please choose your gender. We value your uniqueness'}
+            style={[
+              MainStyling.textRegular,
+              {
+                fontSize: wp(3.2),
+                color: acolors.gray,
+              },
+            ]}
+            textalign={'center'}
+          />
+        </View>
+        <View style={[MainStyling.bottomSection]}>
+          <SliderButtons onSlideComplete={gotoOldscreen} />
+        </View>
+      </View>
+    </ScreenBackgroundImage>
+  );
 }
