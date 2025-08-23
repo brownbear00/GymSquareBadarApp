@@ -5,8 +5,10 @@ import { wp } from '../../constant/responsive';
 import { acolors } from '../../constant/colors';
 import BackIcon from '../../assets/images/icons/BackIcon.png';
 import { useNavigation } from '@react-navigation/native';
+import Textcustom from '../Text/Textcustom';
+import MainStyling from '../../constant/MainStyling';
 
-export default function Header({ onPress }) {
+export default function Header({ enableskip = false, skiponpress }) {
     const navigation = useNavigation();
     function handlegoback() {
         navigation.goBack();
@@ -32,6 +34,20 @@ export default function Header({ onPress }) {
                         resizeMode: 'contain'
                     }} />
             </TouchableOpacity>
+            {enableskip && (
+                <>
+
+                    <TouchableOpacity activeOpacity={0.4}
+                        onPress={skiponpress}
+                    >
+                        <Textcustom
+                            title={'Skip'}
+                            style={[MainStyling.textSemiBold,
+                            Mainstyling.textRegular, { color: acolors.red, fontSize: 12 }]}
+                        />
+                    </TouchableOpacity>
+                </>
+            )}
         </View>
     )
 }

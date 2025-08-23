@@ -49,9 +49,9 @@ const MainStyling = StyleSheet.create({
     },
 
 
-    title: { fontSize: 28, letterSpacing: -1 },
-    heading: { fontSize: 25, letterSpacing: -1 },
-    subHeading: { fontSize: 18, letterSpacing: -1 },
+    title: { fontSize: 28,  },
+    heading: { fontSize: 25, },
+    subHeading: { fontSize: 18,  },
     bodyText: { fontSize: 15 },
     smallText: { fontSize: 12 },
     description: { fontSize: 12, color: acolors.gray },
@@ -100,7 +100,6 @@ const MainStyling = StyleSheet.create({
         right: 0,
         paddingHorizontal: wp(4),
         paddingVertical: wp(3),
-        backgroundColor: acolors.white,
         justifyContent: 'center',
         alignItems: 'center',
     },

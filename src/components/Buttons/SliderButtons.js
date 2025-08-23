@@ -15,7 +15,6 @@ import TrippleArrow from '../../assets/images/icons/TrippleArrow.png';
 export default function SliderButtons({ onSlideComplete }) {
   const pan = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
 
-  // Animate background color of container
   const backgroundColor = pan.x.interpolate({
     inputRange: [0, wp(65)],
     outputRange: ['#fff', acolors.red],
@@ -94,6 +93,7 @@ const styles = StyleSheet.create({
     borderColor: acolors.red,
     justifyContent: 'center',
     overflow: 'hidden',
+   
   },
   label: {
     position: 'absolute',
