@@ -13,6 +13,9 @@ export default function Header({ enableskip = false, skiponpress }) {
     function handlegoback() {
         navigation.goBack();
     }
+    function gotoPhoneNumberSreen() {
+        navigation.navigate('PhoneNumberSreen')
+    }
     return (
         <View style={[Mainstyling.row]}>
             <TouchableOpacity activeOpacity={0.4}
@@ -38,7 +41,7 @@ export default function Header({ enableskip = false, skiponpress }) {
                 <>
 
                     <TouchableOpacity activeOpacity={0.4}
-                        onPress={skiponpress}
+                        onPress={gotoPhoneNumberSreen}
                     >
                         <Textcustom
                             title={'Skip'}

@@ -1,33 +1,27 @@
 import { } from 'react';
-import { Image, View } from 'react-native';
-import ScreenBackgroundImage from '../../components/BackgroundImage/ScreenBackgroundImage';
-import MainStyling from '../../constant/MainStyling';
-import Texcustom from '../../components/Text/Textcustom';
-import Header from '../../components/Header/Header';
-import SliderButtons from '../../components/Buttons/SliderButtons';
-import { acolors } from '../../constant/colors';
-import { hp, wp } from '../../constant/responsive';
+import { Image, TouchableOpacity, View } from 'react-native';
+import ScreenBackgroundImage from '../../../components/BackgroundImage/ScreenBackgroundImage';
+import MainStyling from '../../../constant/MainStyling';
+import Texcustom from '../../../components/Text/Textcustom';
+import Header from '../../../components/Header/Header';
+import SliderButtons from '../../../components/Buttons/SliderButtons';
+import { acolors } from '../../../constant/colors';
+import { hp, wp } from '../../../constant/responsive';
 import { useNavigation } from '@react-navigation/native';
-import Location from '../../assets/images/icons/Location.png';
-import FormInput from '../../components/Input/FormInput'
-import MapImage from '../../assets/images/icons/MapImage.png';
+import Location from '../../../assets/images/icons/Location.png';
+import FormInput from '../../../components/Input/FormInput'
+import MapImage from '../../../assets/images/icons/MapImage.png';
 import LinearGradient from 'react-native-linear-gradient';
 export default function LocationScreen() {
-    //  function gotoLocationScreen() {
-    //     navigation.navigate('LocationScreen')
-    // }
+    const navigation = useNavigation();
+    function gotoPhoneNumberSreen() {
+        navigation.navigate('PhoneNumberSreen')
+    }
     return (
         <ScreenBackgroundImage>
             <View style={[MainStyling.flex, MainStyling.body]}>
                 <Header enableskip={true} />
-                {/* <LinearGradient color={[acolors.black, acolors.black]}
-                    style={{
-                        width: 200,
-                        height: 100,
-                        borderRadius: 20
-                    }}>
 
-                </LinearGradient> */}
                 <View style={[MainStyling.rowcentered, { marginVertical: hp('4%') }]}>
                     <Texcustom
                         title={'Enter your location'}
@@ -61,11 +55,25 @@ export default function LocationScreen() {
                             height: wp(50),
                             resizeMode: 'contain'
                         }} />
+                    <View>
+                        <TouchableOpacity style={{
+                            alignSelf: 'flex-end',
+                            borderRadius: wp(20),
+                            paddingHorizontal: wp(4),
+                            paddingVertical: wp(1),
+                            backgroundColor: acolors.red,
+                            marginTop: wp(2)
+                        }}>
+                            <Texcustom
+                                title={'Show Map'}
+                                style={[MainStyling.textSemiBold, MainStyling.smallText, { color: acolors.white }]} />
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 <View style={MainStyling.bottomSection}>
 
                     <SliderButtons
-                    //onSlideComplete={gotoLocationScreen} 
+                        onSlideComplete={gotoPhoneNumberSreen}
                     />
                 </View>
             </View>

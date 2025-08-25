@@ -9,18 +9,22 @@ import {
     Text,
     View,
 } from 'react-native';
-import GymBg from '../../assets/images/icons/BackgroundImage2.png';
-import Logo from '../../assets/images/icons/WhiteLogo.png';
-import { acolors } from '../../constant/colors';
-import { wp } from '../../constant/responsive';
-import Buttons from '../../components/Buttons/Buttons';
+import GymBg from '../../../assets/images/icons/BackgroundImage2.png';
+import Logo from '../../../assets/images/icons/WhiteLogo.png';
+import { acolors } from '../../../constant/colors';
+import { wp } from '../../../constant/responsive';
+import Buttons from '../../../components/Buttons/Buttons';
 import { useNavigation } from '@react-navigation/native';
+import { afonts } from '../../../constant/fonts';
 export default function EntryScreen() {
     const slideAnim = useRef(new Animated.Value(1000)).current;
     const navigation = useNavigation();
 
     function gotoGenderScreen() {
         navigation.navigate('GenderScreen')
+    }
+    function gotoPhoneNumberSreen() {
+        navigation.navigate('PhoneNumberSreen')
     }
     useEffect(() => {
         Animated.timing(slideAnim, {
@@ -53,6 +57,7 @@ export default function EntryScreen() {
                         title="Login"
                         backgroundColor={acolors.white}
                         color={acolors.black}
+                        onPress={gotoPhoneNumberSreen}
                     />
                     <Buttons
                         title="Sign Up"
@@ -90,8 +95,9 @@ const styles = StyleSheet.create({
     heading: {
         color: acolors.white,
         fontSize: 32,
-        fontWeight: '700',
+        fontFamily:afonts.semiBold,
+        letterSpacing:-1,
         textAlign: 'center',
-        marginBottom: wp(15),
+        marginBottom: wp(10),
     },
 });

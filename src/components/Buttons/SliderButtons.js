@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
-import { 
-  StyleSheet, 
-  Animated, 
-  PanResponder, 
-  Image 
+import {
+  StyleSheet,
+  Animated,
+  PanResponder,
+  Image
 } from 'react-native';
 import { acolors } from '../../constant/colors';
 import { wp } from '../../constant/responsive';
@@ -12,7 +12,7 @@ import MainStyling from '../../constant/MainStyling';
 import Tick from '../../assets/images/icons/Tick.png';
 import TrippleArrow from '../../assets/images/icons/TrippleArrow.png';
 
-export default function SliderButtons({ onSlideComplete }) {
+export default function SliderButtons({ onSlideComplete, label = "Continue" }) {
   const pan = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
 
   const backgroundColor = pan.x.interpolate({
@@ -65,15 +65,10 @@ export default function SliderButtons({ onSlideComplete }) {
 
   return (
     <Animated.View style={[styles.container, { backgroundColor }]}>
-      {/* Label */}
       <Animated.Text style={[MainStyling.textSemiBold, styles.label, { color: labelColor }]}>
-        Continue
+        {label}
       </Animated.Text>
-
-      {/* Arrow icon (right side) */}
       <Image source={TrippleArrow} style={styles.arrow} />
-
-      {/* Sliding Knob */}
       <Animated.View
         {...panResponder.panHandlers}
         style={[styles.slider, { transform: [{ translateX: pan.x }] }]}
@@ -93,7 +88,6 @@ const styles = StyleSheet.create({
     borderColor: acolors.red,
     justifyContent: 'center',
     overflow: 'hidden',
-   
   },
   label: {
     position: 'absolute',

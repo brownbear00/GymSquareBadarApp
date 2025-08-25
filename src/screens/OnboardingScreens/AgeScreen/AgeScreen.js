@@ -5,13 +5,13 @@ import {
     StyleSheet,
     Dimensions,
 } from 'react-native';
-import ScreenBackgroundImage from '../../components/BackgroundImage/ScreenBackgroundImage';
-import MainStyling from '../../constant/MainStyling';
-import Texcustom from '../../components/Text/Textcustom';
-import Header from '../../components/Header/Header';
-import SliderButtons from '../../components/Buttons/SliderButtons';
-import { acolors } from '../../constant/colors';
-import { hp, wp } from '../../constant/responsive';
+import ScreenBackgroundImage from '../../../components/BackgroundImage/ScreenBackgroundImage';
+import MainStyling from '../../../constant/MainStyling';
+import Texcustom from '../../../components/Text/Textcustom';
+import Header from '../../../components/Header/Header';
+import SliderButtons from '../../../components/Buttons/SliderButtons';
+import { acolors } from '../../../constant/colors';
+import { hp, wp } from '../../../constant/responsive';
 import { useNavigation } from '@react-navigation/native';
 
 const { height } = Dimensions.get('window');

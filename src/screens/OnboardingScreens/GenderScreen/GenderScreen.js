@@ -1,15 +1,15 @@
 import React, { useState, useRef } from 'react';
 import { View, TouchableOpacity, Image, Animated, StyleSheet } from 'react-native';
-import MainStyling from '../../constant/MainStyling';
-import Texcustom from '../../components/Text/Textcustom';
-import Header from '../../components/Header/Header';
-import SliderButtons from '../../components/Buttons/SliderButtons';
-import { acolors } from '../../constant/colors';
-import { hp, wp } from '../../constant/responsive';
+import MainStyling from '../../../constant/MainStyling';
+import Texcustom from '../../../components/Text/Textcustom';
+import Header from '../../../components/Header/Header';
+import SliderButtons from '../../../components/Buttons/SliderButtons';
+import { acolors } from '../../../constant/colors';
+import { hp, wp } from '../../../constant/responsive';
 import { useNavigation } from '@react-navigation/native';
-import ScreenBackgroundImage from '../../components/BackgroundImage/ScreenBackgroundImage';
-import Male from '../../assets/images/icons/Male.png';
-import Female from '../../assets/images/icons/Female.png';
+import ScreenBackgroundImage from '../../../components/BackgroundImage/ScreenBackgroundImage';
+import Male from '../../../assets/images/icons/Male.png';
+import Female from '../../../assets/images/icons/Female.png';
 
 export default function GenderScreen() {
   const navigation = useNavigation();

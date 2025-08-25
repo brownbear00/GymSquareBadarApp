@@ -42,6 +42,7 @@ const MainStyling = StyleSheet.create({
     textSemiBold: {
         fontFamily: afonts.semiBold,
         color: acolors.black,
+        letterSpacing:-0.5
     },
     textBold: {
         fontFamily: afonts.bold,
