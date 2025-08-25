@@ -8,6 +8,7 @@ import LocationScreen from '../../screens/OnboardingScreens/LocationScreen/Locat
 import PhoneNumberSreen from '../../screens/OnboardingScreens/PhoneNumberSreen/PhoneNumberSreen';
 import OTPScreen from '../../screens/OnboardingScreens/OTPScreen/OTPScreen';
 import NameScreen from '../../screens/OnboardingScreens/NameScreen/NameScreen';
+import TabBar from '../Tab/TabNavigator'
 const Stack = createNativeStackNavigator();
 export default function StackNavigator() {
     return (
@@ -20,6 +21,7 @@ export default function StackNavigator() {
             <Stack.Screen name="PhoneNumberSreen" component={PhoneNumberSreen} />
             <Stack.Screen name="OTPScreen" component={OTPScreen} />
             <Stack.Screen name="NameScreen" component={NameScreen} />
+            <Stack.Screen name="HomeScreen" component={TabBar} />
         </Stack.Navigator>
     );
 }

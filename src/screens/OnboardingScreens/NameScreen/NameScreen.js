@@ -12,8 +12,8 @@ import { useNavigation } from '@react-navigation/native';
 import FormInput from '../../../components/Input/FormInput'
 export default function NameScreen() {
     const navigation = useNavigation();
-    function gotoOTPScreen() {
-        //navigation.navigate('OTPScreen')
+    function gotoHomeScreen() {
+        navigation.navigate('HomeScreen')
     }
     return (
         <ScreenBackgroundImage>
@@ -44,7 +44,7 @@ export default function NameScreen() {
 
                     <SliderButtons
                         label='Proceed'
-                        onSlideComplete={gotoOTPScreen}
+                        onSlideComplete={gotoHomeScreen}
                     />
                 </View>
             </View>
