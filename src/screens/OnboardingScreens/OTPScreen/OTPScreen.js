@@ -17,7 +17,7 @@ export default function OTPScreen() {
     const [timer, setTimer] = useState(30);
     const [isResendEnabled, setIsResendEnabled] = useState(false);
     const navigation = useNavigation();
-    function gotoNameScreen(){
+    function gotoNameScreen() {
         navigation.navigate('NameScreen')
     }
 
@@ -59,10 +59,10 @@ export default function OTPScreen() {
         setOtp(new Array(6).fill(''));
         setTimer(30);
         setIsResendEnabled(false);
-    
+
     };
 
-    
+
 
     return (
         <ScreenBackgroundImage>
@@ -123,14 +123,14 @@ export default function OTPScreen() {
                         style={[MainStyling.textMedium, MainStyling.smallText]}
                     />
                 </View>
-
-                <View style={MainStyling.bottomSection}>
-                    <SliderButtons
-                        label='Send OTP'
-                     onSlideComplete={gotoNameScreen}
-                    />
-                </View>
             </View>
+            <View style={MainStyling.bottomSection}>
+                <SliderButtons
+                    label='Send OTP'
+                    onSlideComplete={gotoNameScreen}
+                />
+            </View>
+
         </ScreenBackgroundImage>
     );
 }

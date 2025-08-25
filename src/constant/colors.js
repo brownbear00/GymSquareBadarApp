@@ -4,6 +4,7 @@ export const acolors = {
     bodytext: '#A7A7A7',
     red: '#AF1F18',
     secondaryblack: '#272727',
-    gray:'#666666'
+    gray:'#666666',
+    yellow:'#FFBB00'
 
 }

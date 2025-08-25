@@ -40,14 +40,16 @@ export default function NameScreen() {
                 <View style={[{ margin: hp(4) }]} />
                 <FormInput
                     placeholder={'Enter Full Name'} />
-                <View style={MainStyling.bottomSection}>
-
-                    <SliderButtons
-                        label='Proceed'
-                        onSlideComplete={gotoHomeScreen}
-                    />
-                </View>
             </View>
+
+            <View style={MainStyling.bottomSection}>
+
+                <SliderButtons
+                    label='Proceed'
+                    onSlideComplete={gotoHomeScreen}
+                />
+            </View>
+
 
         </ScreenBackgroundImage>
     )

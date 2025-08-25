@@ -42,7 +42,7 @@ const MainStyling = StyleSheet.create({
     textSemiBold: {
         fontFamily: afonts.semiBold,
         color: acolors.black,
-        letterSpacing:-0.5
+        letterSpacing: -0.5
     },
     textBold: {
         fontFamily: afonts.bold,
@@ -50,9 +50,9 @@ const MainStyling = StyleSheet.create({
     },
 
 
-    title: { fontSize: 28,  },
+    title: { fontSize: 28, },
     heading: { fontSize: 25, },
-    subHeading: { fontSize: 18,  },
+    subHeading: { fontSize: 18, },
     bodyText: { fontSize: 15 },
     smallText: { fontSize: 12 },
     description: { fontSize: 12, color: acolors.gray },
@@ -96,7 +96,7 @@ const MainStyling = StyleSheet.create({
 
     bottomSection: {
         position: 'absolute',
-        bottom: 0,
+        bottom: 10,
         left: 0,
         right: 0,
         paddingHorizontal: wp(4),
@@ -125,6 +125,17 @@ const MainStyling = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: acolors.bodytext,
     },
+
+    icon: {
+        width: wp(4),
+        height: wp(4),
+        resizeMode: 'contain'
+    },
+    profileimage: {
+        width: wp(12),
+        height: wp(12),
+        resizeMode: 'contain'
+    }
 });
 
 export default MainStyling;

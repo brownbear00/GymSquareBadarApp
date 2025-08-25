@@ -38,14 +38,15 @@ export default function PhoneNumberSreen() {
                     />
                 </View>
                 <PhoneInput />
-                <View style={MainStyling.bottomSection}>
-
-                    <SliderButtons
-                        label='Send OTP'
-                        onSlideComplete={gotoOTPScreen}
-                    />
-                </View>
             </View>
+            <View style={MainStyling.bottomSection}>
+
+                <SliderButtons
+                    label='Send OTP'
+                    onSlideComplete={gotoOTPScreen}
+                />
+            </View>
+
 
         </ScreenBackgroundImage>
     )

@@ -21,7 +21,7 @@ export default function GenderScreen() {
   const onSelect = (gender) => {
     setSelectedGender(gender);
     Animated.spring(translateX, {
-      toValue: gender === 'female' ? 0 : wp(35), 
+      toValue: gender === 'female' ? 0 : wp(35),
       useNativeDriver: true,
     }).start();
   };
@@ -75,10 +75,10 @@ export default function GenderScreen() {
               />
               <Texcustom
                 title={'Female'}
-                style={[MainStyling.textSemiBold,{
+                style={[MainStyling.textSemiBold, {
                   fontSize: wp(3.5),
                   color: selectedGender === 'female' ? acolors.white : acolors.black,
-                 
+
                 }]}
               />
             </TouchableOpacity>
@@ -96,19 +96,20 @@ export default function GenderScreen() {
               />
               <Texcustom
                 title={'Male'}
-                style={[MainStyling.textSemiBold,{
+                style={[MainStyling.textSemiBold, {
                   fontSize: wp(3.5),
                   color: selectedGender === 'male' ? acolors.white : acolors.black,
-                  
+
                 }]}
               />
             </TouchableOpacity>
           </View>
         </View>
 
-        <View style={[MainStyling.bottomSection]}>
-          <SliderButtons onSlideComplete={gotoAgeScreen} />
-        </View>
+
+      </View>
+      <View style={[MainStyling.bottomSection]}>
+        <SliderButtons onSlideComplete={gotoAgeScreen} />
       </View>
     </ScreenBackgroundImage>
   );
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
   },
   circle: {
     position: 'absolute',
-    width: wp(35), 
+    width: wp(35),
     height: wp(28),
     borderRadius: wp(40),
     backgroundColor: acolors.red,

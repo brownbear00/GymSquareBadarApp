@@ -120,11 +120,11 @@ export default function AgeScreen() {
                         />
                     </View>
                 </View>
-
-                <View style={MainStyling.bottomSection}>
-                    <SliderButtons onSlideComplete={gotoLocationScreen} />
-                </View>
             </View>
+            <View style={MainStyling.bottomSection}>
+                <SliderButtons onSlideComplete={gotoLocationScreen} />
+            </View>
+
         </ScreenBackgroundImage>
     );
 }

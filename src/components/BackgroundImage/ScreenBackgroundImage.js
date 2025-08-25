@@ -10,8 +10,7 @@ export default function ScreenBackgroundImage({ children }) {
       style={styles.background}
       resizeMode="cover"
     >
-      {/* Handle iOS notch + Android StatusBar */}
-      <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
         <StatusBar
           barStyle="light-content"
           translucent

@@ -70,13 +70,14 @@ export default function LocationScreen() {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View style={MainStyling.bottomSection}>
-
-                    <SliderButtons
-                        onSlideComplete={gotoPhoneNumberSreen}
-                    />
-                </View>
             </View>
+            <View style={MainStyling.bottomSection}>
+
+                <SliderButtons
+                    onSlideComplete={gotoPhoneNumberSreen}
+                />
+            </View>
+
         </ScreenBackgroundImage>
     )
 }
