@@ -67,7 +67,7 @@ export default function OTPScreen() {
     return (
         <ScreenBackgroundImage>
             <View style={[MainStyling.flex, MainStyling.body]}>
-                <Header />
+                <Header showprofile={false} />
                 <View style={[MainStyling.rowcentered, { marginVertical: hp('4%') }]}>
                     <Texcustom
                         title={'Enter Verification Code'}

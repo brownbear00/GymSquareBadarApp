@@ -20,7 +20,7 @@ export default function LocationScreen() {
     return (
         <ScreenBackgroundImage>
             <View style={[MainStyling.flex, MainStyling.body]}>
-                <Header enableskip={true} />
+                <Header enableskip={true} showprofile={false} />
 
                 <View style={[MainStyling.rowcentered, { marginVertical: hp('4%') }]}>
                     <Texcustom

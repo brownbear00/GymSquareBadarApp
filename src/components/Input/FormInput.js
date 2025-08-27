@@ -17,12 +17,15 @@ export default function FormInput({
     marginVertical = wp(1),
     multiline = false,
     numberOfLines = 4,
-    rightIcon = false,   // 👈 added
-    iconSource,          // 👈 added (require/import image path)
-    onIconPress,         // 👈 optional, if you want touchable
+    rightIcon = false,  
+    iconSource,          
+    onIconPress,
+    marginTop,
+    backgroundColor = acolors.white,
+    color = acolors.bodytext,
 }) {
     return (
-        <View style={{ marginVertical }}>
+        <View style={{ marginVertical, marginTop }}>
             {/* Title (commented for now) */}
             {/* <Textcustom
                 title={title}
@@ -40,6 +43,7 @@ export default function FormInput({
                         paddingVertical: 0,
                         flexDirection: 'row',
                         alignItems: multiline ? 'flex-start' : 'center',
+                        backgroundColor
                     }
                 ]}
             >
@@ -50,10 +54,11 @@ export default function FormInput({
                             textAlignVertical: multiline ? 'top' : 'center',
                             paddingTop: multiline ? wp(2) : 0,
                             paddingBottom: multiline ? wp(1) : 0,
+                            color
                         }
                     ]}
                     placeholder={placeholder}
-                    placeholderTextColor={acolors.bodytext}
+                    placeholderTextColor={color}
                     keyboardType={keyboardType || 'default'}
                     value={value}
                     onChangeText={onChangeText}
@@ -91,7 +96,7 @@ export default function FormInput({
 const styles = StyleSheet.create({
     inputcontainer: {
         width: '100%',
-        backgroundColor: acolors.white,
+        //backgroundColor: acolors.black,
         borderRadius: wp(10),
         borderWidth: 0.5,
         borderColor: acolors.bodytext,
@@ -101,7 +106,7 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 12,
         fontFamily: afonts.regular,
-        color: acolors.bodytext,
+
     },
     icon: {
         width: wp(5),

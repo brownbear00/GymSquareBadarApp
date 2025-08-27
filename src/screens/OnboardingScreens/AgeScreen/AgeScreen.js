@@ -66,7 +66,7 @@ export default function AgeScreen() {
     return (
         <ScreenBackgroundImage>
             <View style={[MainStyling.flex, MainStyling.body]}>
-                <Header />
+                <Header showprofile={false} />
 
                 {/* Title */}
                 <View style={[MainStyling.rowcentered, { marginVertical: hp('4%') }]}>

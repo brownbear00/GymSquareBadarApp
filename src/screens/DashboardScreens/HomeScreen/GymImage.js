@@ -6,6 +6,7 @@ import { hp, wp } from '../../../constant/responsive';
 import Star from '../../../assets/images/gymimages/Star.png';
 import LocationIcon from '../../../assets/images/gymimages/LocationIcon.png';
 import TrippleArrow from '../../../assets/images/icons/TrippleArrow.png';
+import { afonts } from '../../../constant/fonts';
 
 export default function Gymimage({
     gymimage,
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
     gymTitle: {
         color: acolors.white,
         fontSize: wp(4.5),
-        fontWeight: '700',
+        fontFamily:afonts.semiBold,
     },
     infoRow: {
         marginTop: hp(1),

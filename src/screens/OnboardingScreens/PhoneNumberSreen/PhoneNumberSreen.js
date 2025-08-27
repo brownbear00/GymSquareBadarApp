@@ -18,7 +18,7 @@ export default function PhoneNumberSreen() {
     return (
         <ScreenBackgroundImage>
             <View style={[MainStyling.flex, MainStyling.body]}>
-                <Header />
+                <Header showprofile={false}  />
                 <View style={[MainStyling.rowcentered, { marginVertical: hp('4%') }]}>
                     <Texcustom
                         title={'Enter Your Mobile Number'}

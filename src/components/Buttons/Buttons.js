@@ -18,12 +18,13 @@ const Buttons = ({
   width = "100%",
   height = hp('5'),
   fontSize = 16,
-  marginHorizontal
+  marginHorizontal,
+  borderRadius = wp(10)
 
 }) => {
   return (
     <TouchableOpacity
-      style={[MainStyling.button, styles.button, { backgroundColor, elevation, marginVertical, width, height,marginHorizontal }]}
+      style={[MainStyling.button, styles.button, { backgroundColor, elevation, marginVertical, width, height, marginHorizontal, borderRadius }]}
       onPress={onPress}
       activeOpacity={0.4}
     >
@@ -32,8 +33,8 @@ const Buttons = ({
         {leftIcon && <Image source={leftIcon} style={styles.icon} />}
 
 
-        <Text style={[MainStyling.buttonText, 
-          { color, marginHorizontal: wp(2), fontFamily, fontSize,}]}>
+        <Text style={[MainStyling.buttonText,
+        { color, marginHorizontal: wp(2), fontFamily, fontSize, }]}>
           {title}
         </Text>
 

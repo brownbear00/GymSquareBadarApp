@@ -9,7 +9,7 @@ import { acolors } from '../../../constant/colors';
 import { hp, wp } from '../../../constant/responsive';
 import PhoneInput from '../../../components/Input/PhoneInput';
 import { useNavigation } from '@react-navigation/native';
-import FormInput from '../../../components/Input/FormInput'
+import FormInput from '../../../components/Input/FormInput';
 export default function NameScreen() {
     const navigation = useNavigation();
     function gotoHomeScreen() {
@@ -18,7 +18,7 @@ export default function NameScreen() {
     return (
         <ScreenBackgroundImage>
             <View style={[MainStyling.flex, MainStyling.body]}>
-                <Header />
+                <Header showprofile={false} />
                 <View style={[MainStyling.rowcentered, { marginVertical: hp('4%') }]}>
                     <Texcustom
                         title={"Enter \n Your Name"}

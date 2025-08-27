@@ -38,7 +38,7 @@ export default function SliderButtons({ onSlideComplete, label = "Continue" }) {
         }
       },
       onPanResponderRelease: (_, gestureState) => {
-        if (gestureState.dx > wp(50)) {
+        if (gestureState.dx > wp(60)) {
           // Completed → animate to end
           Animated.timing(pan, {
             toValue: { x: wp(65), y: 0 },

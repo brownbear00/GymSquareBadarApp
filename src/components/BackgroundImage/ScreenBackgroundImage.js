@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, ImageBackground, StatusBar, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ScreenBackground from '../../assets/images/icons/ScreenBackground.png'; 
+import ScreenBackground from '../../assets/images/icons/ScreenBackground.png';
 
-export default function ScreenBackgroundImage({ children }) {
+
+export default function ScreenBackgroundImage({ children, bgimage }) {
   return (
+
     <ImageBackground
-      source={ScreenBackground}
+      source={bgimage||ScreenBackground}
       style={styles.background}
       resizeMode="cover"
     >

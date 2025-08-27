@@ -20,6 +20,7 @@ import { afonts } from '../../constant/fonts';
 
 import HomeStack from './HomeStack';
 import MembershipStack from './MembershipStack';
+import ProfileStack from './ProfileStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -83,7 +84,7 @@ const TabNavigator = () => {
             <Tab.Screen name="QR Scan" component={QRScanScreen} />
             <Tab.Screen name="Membership" component={MembershipStack} />
             <Tab.Screen name="History" component={HistoryScreen} />
-            <Tab.Screen name="Profile" component={ProfileScreen} />
+            <Tab.Screen name="Profile" component={ProfileStack} />
         </Tab.Navigator>
     );
 };

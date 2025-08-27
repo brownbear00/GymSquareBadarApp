@@ -17,15 +17,19 @@ export default function PhoneInput({
   iconSource = Dropdown,
   disabled = false,
   description,
+  backgroundColor = acolors.white,
+  color = acolors.bodytext,
 }) {
-  const [countryCode, setCountryCode] = useState('PK');   
-  const [callingCode, setCallingCode] = useState('92');
-  const [countryName, setCountryName] = useState('Pakistan');
+ 
+  const [countryCode, setCountryCode] = useState('SA');   
+  const [callingCode, setCallingCode] = useState('966'); 
+  const [countryName, setCountryName] = useState('Saudi Arabia'); 
+
   const [pickerVisible, setPickerVisible] = useState(false);
 
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [maxLength, setMaxLength] = useState(10);   
-  const [dynamicPlaceholder, setDynamicPlaceholder] = useState('----------'); 
+  const [maxLength, setMaxLength] = useState(10);
+  const [dynamicPlaceholder, setDynamicPlaceholder] = useState('----------');
 
   const handleCountrySelect = (country) => {
     setCountryCode(country.cca2);
@@ -33,7 +37,7 @@ export default function PhoneInput({
     setCountryName(country.name);
 
     try {
-     
+
       const example = parsePhoneNumberFromString(`+${country.callingCode[0]}1234567890`, country.cca2);
       if (example) {
         const possibleLength = example.nationalNumber.length;
@@ -52,9 +56,9 @@ export default function PhoneInput({
   };
 
   return (
-    <View style={{ marginVertical }}>
-      {/* --- Country Select Row --- */}
-      <View style={[styles.inputcontainer, { height }]}>
+    <View style={{ marginVertical: wp(1) }}>
+
+      <View style={[styles.inputcontainer, { height, marginBottom: wp(1), backgroundColor }]}>
         <CountryPicker
           countryCode={countryCode}
           withFilter
@@ -68,9 +72,9 @@ export default function PhoneInput({
         />
 
         <TextInput
-          style={styles.input}
+          style={[styles.input, { color }]}
           placeholder={placeholder}
-          placeholderTextColor={acolors.bodytext}
+          placeholderTextColor={color}
           value={countryName}
           editable={false}
         />
@@ -88,14 +92,15 @@ export default function PhoneInput({
         />
       </View>
 
-      <View style={[styles.inputcontainer, { height, marginVertical: wp(4), paddingHorizontal: wp(2) }]}>
-        <Text style={styles.callingCode}>+{callingCode}</Text>
+      <View style={[styles.inputcontainer, { height, marginVertical: wp(1), paddingHorizontal: wp(2), backgroundColor }]}>
+        <Text style={[styles.callingCode, { color }]}>+{callingCode}</Text>
         <View style={styles.divider} />
 
         <TextInput
-          style={styles.phoneInput}
-          placeholder={dynamicPlaceholder}   
-          placeholderTextColor={acolors.bodytext}
+
+          style={[styles.phoneInput, { color }]}
+          placeholder={dynamicPlaceholder}
+          placeholderTextColor={color}
           value={phoneNumber}
           keyboardType="phone-pad"
           maxLength={maxLength}
@@ -125,7 +130,6 @@ export default function PhoneInput({
 const styles = StyleSheet.create({
   inputcontainer: {
     width: '100%',
-    backgroundColor: acolors.white,
     borderRadius: wp(10),
     borderWidth: 0.5,
     borderColor: acolors.bodytext,
@@ -161,6 +165,7 @@ const styles = StyleSheet.create({
     height: hp(2),
     backgroundColor: acolors.bodytext,
     marginHorizontal: wp(2),
+
   },
   icon: {
     width: wp(3),

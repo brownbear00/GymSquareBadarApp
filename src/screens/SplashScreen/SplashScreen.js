@@ -23,8 +23,8 @@ export default function SplashScreen() {
             <Image
                 source={RedLogo}
                 style={{
-                    width: wp(70),
-                    height: wp(70),
+                    width: wp(50),
+                    height: wp(50),
                     resizeMode: 'contain',
                 }}
             />
