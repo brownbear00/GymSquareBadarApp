@@ -10,7 +10,7 @@ import Textcustom from '../Text/Textcustom';
 import MainStyling from '../../constant/MainStyling';
 import UserProfile from '../../components/Profile/UserProfile';
 
-export default function Header({ enableskip = false, skiponpress, shownotification = false, showprofile = true }) {
+export default function Header({ enableskip = false, skiponpress, shownotification = false, showprofile = true, title }) {
     const navigation = useNavigation();
     function handlegoback() {
         navigation.goBack();
@@ -59,6 +59,16 @@ export default function Header({ enableskip = false, skiponpress, shownotificati
                         />
                     </TouchableOpacity>
                 </>
+            )}
+
+            {title && (
+                <View style={{ flex: 1, alignItems: 'center' }}>
+                    <Textcustom
+                        title={title}
+                        style={[MainStyling.textSemiBold,
+                        Mainstyling.textSemiBold, MainStyling.title]}
+                    />
+                </View>
             )}
             {shownotification && (
                 <>

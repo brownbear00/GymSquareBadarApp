@@ -18,6 +18,9 @@ import { wp } from '../../constant/responsive';
 import { acolors } from '../../constant/colors';
 import { afonts } from '../../constant/fonts';
 
+import HomeStack from './HomeStack';
+import MembershipStack from './MembershipStack';
+
 const Tab = createBottomTabNavigator();
 
 const CustomTabBar = ({ state, descriptors, navigation }) => {
@@ -76,9 +79,9 @@ const TabNavigator = () => {
             }}
             tabBar={(props) => <CustomTabBar {...props} />}
         >
-            <Tab.Screen name="Home" component={HomeScreen} />
+            <Tab.Screen name="Home" component={HomeStack} />
             <Tab.Screen name="QR Scan" component={QRScanScreen} />
-            <Tab.Screen name="Membership" component={MembershipScreen} />
+            <Tab.Screen name="Membership" component={MembershipStack} />
             <Tab.Screen name="History" component={HistoryScreen} />
             <Tab.Screen name="Profile" component={ProfileScreen} />
         </Tab.Navigator>

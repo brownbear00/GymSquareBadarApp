@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     View,
     TextInput,
@@ -24,26 +24,22 @@ const chipsData = [
     { id: 5, label: 'Medina' },
 ];
 
-export default function SearchFilter({}) {
-    const [activeChip, setActiveChip] = useState(1);
-
+export default function SearchFilter({ activeChip, setActiveChip }) {
     return (
         <View style={{ marginTop: wp(2) }}>
-
+            {/* Search bar */}
             <View
                 style={[
                     MainStyling.row,
                     { alignItems: 'center', paddingHorizontal: wp(5) },
                 ]}
             >
-
                 <TouchableOpacity style={styles.filterButton} activeOpacity={0.6}>
                     <Image
                         source={Filter}
                         style={{ width: wp(4), height: wp(4), resizeMode: 'contain' }}
                     />
                 </TouchableOpacity>
-
 
                 <View style={styles.searchBar}>
                     <TextInput
@@ -58,6 +54,7 @@ export default function SearchFilter({}) {
                 </View>
             </View>
 
+            {/* Chips */}
             <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -96,7 +93,6 @@ export default function SearchFilter({}) {
                     );
                 })}
             </ScrollView>
-           
         </View>
     );
 }
@@ -111,7 +107,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: wp(3),
-        backgroundColor:acolors.white
+        backgroundColor: acolors.white,
     },
     searchBar: {
         flex: 1,
@@ -122,7 +118,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 10,
         height: wp(8),
-         backgroundColor:acolors.white
+        backgroundColor: acolors.white,
     },
     searchInput: {
         flex: 1,

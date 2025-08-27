@@ -7,60 +7,97 @@ import Star from '../../../assets/images/gymimages/Star.png';
 import LocationIcon from '../../../assets/images/gymimages/LocationIcon.png';
 import TrippleArrow from '../../../assets/images/icons/TrippleArrow.png';
 
-export default function Gymimage({ 
-    gymimage, 
-    gymname, 
-    gymlocation, 
-    gymreward = 0,  // number of yellow stars (out of 5)
-    gymscore        // numeric score like 4.8
+export default function Gymimage({
+    gymimage,
+    gymname,
+    gymlocation,
+    gymreward = 0,
+    gymscore,
+    onPress,
+    showdetail = true
 }) {
     return (
         <View style={styles.cardContainer}>
             <Image source={gymimage} style={styles.imageStyle} />
 
-            {/* Overlay */}
+
+            {!showdetail && (
+                <View style={styles.topRightScore}>
+                    <Image source={Star} style={styles.topStarIcon} />
+                    <Texcustom
+                        title={gymscore?.toFixed(1)}
+                        style={styles.topScoreText}
+                    />
+                </View>
+            )}
+
             <View style={styles.overlay}>
+
                 <Texcustom
                     title={gymname}
-                    style={[styles.gymTitle]} />
+                    style={[
+                        styles.gymTitle,
+                        {
+                            fontSize: showdetail ? wp(4.5) : wp(6),
+                            //textAlign: showdetail === false ? 'center' : null,
+                        },
+                    ]}
+                />
+
 
                 <View style={styles.infoRow}>
-                    {/* Location */}
-                    <View style={styles.locationContainer}>
-                        <Image source={LocationIcon} style={styles.iconStyle} />
-                        <Texcustom
-                            title={gymlocation}
-                            style={styles.locationText}
-                            marginHorizontal={wp(1.5)}
-                        />
-                    </View>
+                    {showdetail ? (
+                        <>
+                            <View style={styles.locationContainer}>
+                                <Image source={LocationIcon} style={styles.iconStyle} />
+                                <Texcustom
+                                    title={gymlocation}
+                                    style={styles.locationText}
+                                    marginHorizontal={wp(1.5)}
+                                />
+                            </View>
+                        </>
+                    ) : null}
 
-                    {/* Stars */}
-                    <View style={styles.starsContainer}>
-                        {[...Array(5)].map((_, i) => (
-                            <Image
-                                key={i}
-                                source={Star}
-                                style={[
-                                    styles.iconStyle,
-                                    { tintColor: i < gymreward ? acolors.yellow : acolors.white }
-                                ]}
-                            />
-                        ))}
-                        <Texcustom
-                            title={gymscore?.toFixed(1)}
-                            style={styles.ratingText}
-                            marginHorizontal={wp(1.5)}
-                        />
-                    </View>
+                    {showdetail ? (
+                        <>
+                            <View style={styles.starsContainer}>
+                                {[...Array(5)].map((_, i) => (
+                                    <Image
+                                        key={i}
+                                        source={Star}
+                                        style={[
+                                            styles.iconStyle,
+                                            {
+                                                tintColor: i < gymreward ? acolors.yellow : acolors.white,
+                                            },
+                                        ]}
+                                    />
+                                ))}
+                                <Texcustom
+                                    title={gymscore?.toFixed(1)}
+                                    style={styles.ratingText}
+                                    marginHorizontal={wp(1.5)}
+                                />
+                            </View>
+                        </>
+                    ) : null}
                 </View>
             </View>
 
-            {/* Arrow Button */}
-            <TouchableOpacity style={styles.arrowButton}>
-                <Image source={TrippleArrow} style={styles.arrowIcon} />
-            </TouchableOpacity>
+            {showdetail ? (
+                <>
+                    <TouchableOpacity
+                        style={styles.arrowButton}
+                        activeOpacity={0.4}
+                        onPress={onPress}
+                    >
+                        <Image source={TrippleArrow} style={styles.arrowIcon} />
+                    </TouchableOpacity>
+                </>
+            ) : null}
         </View>
+
     );
 }
 
@@ -72,7 +109,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         position: 'relative',
         backgroundColor: acolors.black,
-        marginBottom:wp(2)
+        marginBottom: wp(2)
     },
     imageStyle: {
         width: '100%',
@@ -138,5 +175,29 @@ const styles = StyleSheet.create({
         height: wp(5),
         resizeMode: 'contain',
         tintColor: 'red',
-    }
+    },
+    topRightScore: {
+        position: 'absolute',
+        top: wp(2),
+        right: wp(2),
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        borderRadius: wp(3),
+        paddingHorizontal: wp(2),
+        paddingVertical: wp(0.5),
+    },
+    topStarIcon: {
+        width: wp(4),
+        height: wp(4),
+        resizeMode: 'contain',
+        tintColor: acolors.yellow,
+        marginRight: wp(1),
+    },
+    topScoreText: {
+        color: acolors.white,
+        fontSize: wp(3.5),
+        fontWeight: '600',
+    },
+
 });

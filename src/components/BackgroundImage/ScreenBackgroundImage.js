@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, ImageBackground, StatusBar, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ScreenBackground from '../../assets/images/icons/ScreenBackground.png'; // adjust path
+import ScreenBackground from '../../assets/images/icons/ScreenBackground.png'; 
 
 export default function ScreenBackgroundImage({ children }) {
   return (
@@ -12,7 +12,7 @@ export default function ScreenBackgroundImage({ children }) {
     >
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
         <StatusBar
-          barStyle="light-content"
+          barStyle="dark-content"
           translucent
           backgroundColor="transparent"
         />
