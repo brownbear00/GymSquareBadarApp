@@ -45,8 +45,17 @@ export default function SearchFilter({ activeChip, setActiveChip }) {
                     <TextInput
                         placeholder="Search..."
                         placeholderTextColor="#999"
-                        style={styles.searchInput}
+                        style={{
+                            color: acolors.bodytext,
+                            fontSize: 10, 
+                            flex: 1,
+                            fontFamily: afonts.regular,
+                            height: wp(100),
+                            paddingVertical: 0, 
+                            textAlignVertical: "center",
+                        }}
                     />
+
                     <Image
                         source={SearchIcon}
                         style={{ width: wp(4), height: wp(4), marginRight: 10 }}
@@ -54,7 +63,6 @@ export default function SearchFilter({ activeChip, setActiveChip }) {
                 </View>
             </View>
 
-            {/* Chips */}
             <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
