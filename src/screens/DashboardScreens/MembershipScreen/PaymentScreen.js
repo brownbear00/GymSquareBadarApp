@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Animated } from 'react-native';
 import ScreenBackgroundImage from '../../../components/BackgroundImage/ScreenBackgroundImage';
 import Header from '../../../components/Header/Header';
 import { acolors } from '../../../constant/colors';
@@ -12,11 +12,15 @@ import Checked from '../../../assets/images/icons/Checked.png';
 import PaymentSuccesfully from '../../../assets/images/icons/PaymentSuccesfully.png';
 import { afonts } from '../../../constant/fonts';
 import Buttons from '../../../components/Buttons/Buttons';
+import Riyal from '../../../assets/images/icons/BlackRiyal.png';
+import { useNavigation } from '@react-navigation/native';
 
 export default function PaymentScreen() {
     const [selectedMethod, setSelectedMethod] = useState('mastercard');
     const [saveCard, setSaveCard] = useState(true);
     const [paymentSuccessful, setPaymentSuccessful] = useState(false);
+    const fadeAnim = useRef(new Animated.Value(0)).current;
+    const scaleAnim = useRef(new Animated.Value(0.5)).current;
 
     const handlePayNow = () => {
         setPaymentSuccessful(true);
@@ -25,6 +29,27 @@ export default function PaymentScreen() {
     const handleMethodHover = (method) => {
         setSelectedMethod(method);
     };
+    useEffect(() => {
+        if (paymentSuccessful) {
+            Animated.parallel([
+                Animated.timing(fadeAnim, {
+                    toValue: 1,
+                    duration: 600,
+                    useNativeDriver: true,
+                }),
+                Animated.spring(scaleAnim, {
+                    toValue: 1,
+                    friction: 4,
+                    tension: 100,
+                    useNativeDriver: true,
+                }),
+            ]).start();
+        }
+    }, [paymentSuccessful]);
+    const navigation = useNavigation();
+    function GotoHome() {
+        navigation.navigate("HomeScreen", { screen: "Home" });
+    }
 
     return (
         <ScreenBackgroundImage>
@@ -32,15 +57,19 @@ export default function PaymentScreen() {
                 <Header showprofile={false} title={'Payment'} />
 
                 {paymentSuccessful ? (
-
-                    <View style={styles.successContainer}>
+                    <Animated.View
+                        style={[
+                            styles.successContainer,
+                            { opacity: fadeAnim, transform: [{ scale: scaleAnim }] },
+                        ]}
+                    >
                         <Image source={PaymentSuccesfully} style={styles.successImage} />
                         <Text style={styles.successTitle}>Payment Successful!</Text>
                         <Text style={styles.successText}>
                             Your membership starts now. Your gym membership is now active and ready to use.
                         </Text>
-                        <Buttons title={'Go to Home'} backgroundColor={acolors.red} />
-                    </View>
+                        <Buttons title={'Go to Home'} backgroundColor={acolors.red} onPress={GotoHome} />
+                    </Animated.View>
                 ) : (
 
                     <>
@@ -52,64 +81,64 @@ export default function PaymentScreen() {
                             </View>
                             <View style={styles.rowBetween}>
                                 <Text style={styles.label}>Total Amount Due</Text>
-                                <Text style={styles.price}>₨ 99/<Text style={styles.small}>month</Text></Text>
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Image source={Riyal} style={{ width: wp(5), height: wp(5), resizeMode: 'contain', tintColor: acolors.black }} />
+                                    <Text style={styles.price}>99/<Text style={styles.small}>month</Text></Text>
+                                </View>
+
                             </View>
                         </View>
 
                         <View style={styles.card}>
                             <Text style={styles.sectionTitle}>Select Method:</Text>
                             <View style={styles.methods}>
-                                <TouchableOpacity
-                                    onPress={() => handleMethodHover('mastercard')}
-                                    onPressIn={() => handleMethodHover('mastercard')}
-                                    onPressOut={() => setSelectedMethod('mastercard')}
-                                >
-                                    <Image source={Mastercard} style={[styles.methodIcon, selectedMethod === 'mastercard' && styles.active]} />
-                                </TouchableOpacity>
-                                <TouchableOpacity
-                                    onPress={() => handleMethodHover('visa')}
-                                    onPressIn={() => handleMethodHover('visa')}
-                                    onPressOut={() => setSelectedMethod('visa')}
-                                >
-                                    <Image source={Visa} style={[styles.methodIcon, selectedMethod === 'visa' && styles.active]} />
-                                </TouchableOpacity>
-                                <TouchableOpacity
-                                    onPress={() => handleMethodHover('paypal')}
-                                    onPressIn={() => handleMethodHover('paypal')}
-                                    onPressOut={() => setSelectedMethod('paypal')}
-                                >
-                                    <Image source={PayPal} style={[styles.methodIcon, selectedMethod === 'paypal' && styles.active]} />
-                                </TouchableOpacity>
-                                <TouchableOpacity
-                                    onPress={() => handleMethodHover('stripe')}
-                                    onPressIn={() => handleMethodHover('stripe')}
-                                    onPressOut={() => setSelectedMethod('stripe')}
-                                >
-                                    <Image source={Stripe} style={[styles.methodIcon, selectedMethod === 'stripe' && styles.active]} />
-                                </TouchableOpacity>
+                                {[
+                                    { key: 'mastercard', icon: Mastercard },
+                                    { key: 'visa', icon: Visa },
+                                    { key: 'paypal', icon: PayPal },
+                                    { key: 'stripe', icon: Stripe },
+                                ].map(({ key, icon }) => (
+                                    <TouchableOpacity
+                                        key={key}
+                                        onPress={() => setSelectedMethod(key)}
+                                        style={[
+                                            styles.methodButton,
+                                            selectedMethod === key && styles.activeMethodButton,
+                                        ]}
+                                    >
+                                        <Image
+                                            source={icon}
+                                            style={[
+                                                styles.methodIcon,
+                                                selectedMethod === key && styles.activeMethodIcon,
+                                            ]}
+                                        />
+                                    </TouchableOpacity>
+                                ))}
                             </View>
+
 
                             <Text style={styles.label}>Card Number:</Text>
                             <TextInput
-                                placeholder="2412 - 7512 - 3412 - 3456"
+                                placeholder="xxxx - xxxx - xxxx - xxxx"
                                 style={styles.input}
                                 keyboardType="numeric"
                             />
 
                             <Text style={styles.label}>Card Holder Name:</Text>
                             <TextInput
-                                placeholder="Ahmed Bin Abdullah"
+                                placeholder="xxxx----"
                                 style={styles.input}
                             />
 
                             <View style={styles.row}>
                                 <View style={{ flex: 1 }}>
                                     <Text style={styles.label}>Expire Date:</Text>
-                                    <TextInput placeholder="09/25" style={styles.input} />
+                                    <TextInput placeholder="xx/xx" style={styles.input} />
                                 </View>
                                 <View style={{ width: wp(25), marginLeft: wp(2) }}>
                                     <Text style={styles.label}>CVV</Text>
-                                    <TextInput placeholder="246" style={styles.input} secureTextEntry />
+                                    <TextInput placeholder="xxx" style={styles.input} secureTextEntry />
                                 </View>
                             </View>
 
@@ -191,16 +220,28 @@ const styles = StyleSheet.create({
     methods: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginVertical: hp(1.5),
+        marginVertical: hp(1),
+    },
+    methodButton: {
+        padding: wp(2),
+        borderRadius: wp(3),
+        borderWidth: 1,
+        borderColor: acolors.gray,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    activeMethodButton: {
+        borderColor: acolors.red,
+
     },
     methodIcon: {
-        width: wp(18),
-        height: hp(6),
+        width: wp(12),
+        height: wp(12),
         resizeMode: 'contain',
-        borderWidth: 1,
-        borderColor: 'transparent',
-        borderRadius: 6,
-        padding: 5,
+        tintColor: undefined,
+    },
+    activeMethodIcon: {
+
     },
     active: {
         borderColor: acolors.primary,

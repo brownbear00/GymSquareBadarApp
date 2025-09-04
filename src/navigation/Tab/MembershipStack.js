@@ -2,6 +2,9 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MembershipScreen from '../../screens/DashboardScreens/MembershipScreen/MembershipScreen';
 import PaymentScreen from '../../screens/DashboardScreens/MembershipScreen/PaymentScreen';
+import HomeScreen from '../../screens/DashboardScreens/HomeScreen/HomeScreen';
+import TabBar from '../Tab/TabNavigator'
+
 
 const Stack = createNativeStackNavigator();
 
@@ -10,7 +13,7 @@ export default function MembershipStack() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Membership" component={MembershipScreen} />
             <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
-
+          
         </Stack.Navigator>
     );
 }

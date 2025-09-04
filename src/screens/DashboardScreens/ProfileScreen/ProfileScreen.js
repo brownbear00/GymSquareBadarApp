@@ -53,9 +53,9 @@ export default function ProfileScreen() {
                 <Placeholder
                     icon={Location}
                     title={'Location'} />
-                <Placeholder
+                {/* <Placeholder
                     icon={Subscription}
-                    title={'Subscription'} />
+                    title={'Subscription'} /> */}
                 <Placeholder
                     icon={History}
                     title={'Clear History'} />

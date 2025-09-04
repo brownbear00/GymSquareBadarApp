@@ -88,7 +88,7 @@ export default function AgeScreen() {
                     />
                 </View>
 
-                <View style={{ flex: 1, justifyContent: 'center' }}>
+                <View style={{ justifyContent: 'center' }}>
                     <FlatList
                         ref={flatListRef}
                         data={ages}
@@ -96,11 +96,19 @@ export default function AgeScreen() {
                         renderItem={renderItem}
                         showsVerticalScrollIndicator={false}
                         contentContainerStyle={{
-                            paddingVertical: height / 2 - ITEM_HEIGHT / 2,
+                            paddingTop: height / 2 - ITEM_HEIGHT / 2,
+                            paddingBottom: height / 2 - ITEM_HEIGHT / 2, // add bottom padding too
                         }}
                         snapToInterval={ITEM_HEIGHT}
                         decelerationRate="fast"
-                        onMomentumScrollEnd={handleMomentumScrollEnd}
+                        onScroll={(event) => {
+                            const offsetY = event.nativeEvent.contentOffset.y;
+                            const index = Math.round(offsetY / ITEM_HEIGHT);
+                            const age = ages[index];
+                            if (age && age !== selectedAge) {
+                                setSelectedAge(age);
+                            }
+                        }}
                         scrollEventThrottle={16}
                         getItemLayout={(data, index) => ({
                             length: ITEM_HEIGHT,
@@ -108,6 +116,8 @@ export default function AgeScreen() {
                             index,
                         })}
                     />
+
+
 
                     <View style={styles.redBox}>
                         <Texcustom
@@ -143,10 +153,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '50%',
         alignSelf: 'center',
-        transform: [{ translateY: -ITEM_HEIGHT / 2 }],
         backgroundColor: acolors.red,
-        paddingVertical: hp(2),
-        paddingHorizontal: wp(10),
+        paddingVertical: hp(1),
+        paddingHorizontal: wp(8),
         borderRadius: wp(10),
         zIndex: 2,
     },

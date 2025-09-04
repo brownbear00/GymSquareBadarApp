@@ -149,7 +149,7 @@ export default function PlanCard({
                 title="Select Plan"
                 color={acolors.red}
                 backgroundColor={acolors.white}
-                height={hp(3)}
+                height={hp(4)}
                 fontFamily={afonts.semiBold}
                 fontSize={wp(3)}
             />
